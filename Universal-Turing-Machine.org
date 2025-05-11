@@ -1,0 +1,80 @@
+#+TITLE: Máquinas de Turing Universales
+#+REVEAL_TITLE_SLIDE: <h1>Máquinas de Turing Universales</h1><p>Carlos Eduardo Moreno Vargas<br/>Joaquin Alfredo Castro Cordova</p>
+#+REVEAL_EXTRA_CSS: gruvbox-light.css
+#+REVEAL_INIT_OPTIONS: transition: 'slide'
+#+OPTIONS: toc:nil num:nil
+#+REVEAL_PLUGINS: (highlight)
+
+
+* Introducción
+Las *máquinas de Turing* (MT) son modelos formales fundamentales para estudiar lo que puede o no ser computado.
+Una *máquina de Turing universal* es una MT que puede simular a cualquier otra MT a partir de una descripción de su código y entrada.
+
+* ¿Qué es una máquina de Turing?
+Una MT es una 7-tupla:
+
+\[
+M = (Q, \Sigma, \Gamma, \delta, q_0, q_{\text{accept}}, q_{\text{reject}})
+\]
+
+donde:
+
+- \( Q \): conjunto de estados
+- \( \Sigma \): alfabeto de entrada
+- \( \Gamma \): alfabeto de cinta (\( \Sigma \subseteq \Gamma \), incluye blanco)
+- \( \delta \): función de transición
+- \( q_0 \): estado inicial
+- \( q_{\text{accept}} \), \( q_{\text{reject}} \): estados finales
+
+* Ejemplo de transición
+
+Una transición típica:
+
+\[
+\delta(q, a) = (q', b, R)
+\]
+
+Significa: si la MT está en el estado \( q \) leyendo el símbolo \( a \), entonces escribe \( b \), se mueve a la derecha y cambia al estado \( q' \).
+
+* Codificación de máquinas de Turing
+
+Para que una MT universal pueda simular a otra MT, primero debemos *codificar* una MT como una cadena de símbolos.
+
+Esta codificación incluye:
+
+- Estados y transiciones como números
+- Separadores para distinguir cada componente
+- Codificación de la entrada
+
+* Máquina de Turing universal
+
+Una *MT universal* \( U \) acepta como entrada una cadena que representa otra MT \( M \) y una entrada \( w \), y simula el comportamiento de \( M \) sobre \( w \):
+
+\[
+U(\langle M, w \rangle) \rightarrow M(w)
+\]
+
+Donde \( \langle M, w \rangle \) es una codificación binaria de ambos.
+
+* Importancia teórica
+
+- Son la base conceptual de los *computadores reales*.
+- Establecen la noción de *programa universal* (precursor de lenguajes de programación).
+- Son fundamentales para demostrar la *incomputabilidad* (ej. problema de la parada).
+
+* Código LaTeX: Máquina que copia bits
+
+Un ejemplo de transición para una MT que copia una cadena binaria separada por un símbolo especial:
+
+\[
+\delta(q_0, 0) = (q_0, 0, R) \\
+\delta(q_0, 1) = (q_0, 1, R) \\
+\delta(q_0, \#) = (q_1, \#, R)
+\]
+
+Esta máquina simplemente avanza hasta encontrar el símbolo separador `#`.
+
+* Fin
+Gracias por su atención.
+
+¿Preguntas?
