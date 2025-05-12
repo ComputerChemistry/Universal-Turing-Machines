@@ -33,8 +33,8 @@
 </section>
 
 </section>
-<section id="slide-org1222da0">
-<h3 id="org1222da0">Contexto</h3>
+<section id="slide-orgfb0434c">
+<h3 id="orgfb0434c">Contexto</h3>
 <ul>
 <li>Las máquinas de Turing (MT) son modelos matemáticos fundamentales en la teoría de la computación.</li>
 <li>Se usan para definir formalmente lo que significa "computar".</li>
@@ -45,13 +45,13 @@
 </section>
 </section>
 <section>
-<section id="slide-orgd388be7">
-<h2 id="orgd388be7">¿Qué es una máquina de Turing?</h2>
-<div class="outline-text-2" id="text-orgd388be7">
+<section id="slide-org3838acf">
+<h2 id="org3838acf">¿Qué es una máquina de Turing?</h2>
+<div class="outline-text-2" id="text-org3838acf">
 </div>
 </section>
-<section id="slide-org8f2e6bb">
-<h3 id="org8f2e6bb">Definición formal</h3>
+<section id="slide-org2a645cc">
+<h3 id="org2a645cc">Definición formal</h3>
 <ul>
 <li>Formalmente, una máquina de Turing es una 7-tupla:
 \[
@@ -61,8 +61,8 @@
 </ul>
 
 </section>
-<section id="slide-org10a4f77">
-<h3 id="org10a4f77">Componentes (I)</h3>
+<section id="slide-orgcf643ea">
+<h3 id="orgcf643ea">Componentes (I)</h3>
 <ul>
 <li>\( Q \): conjunto finito de estados</li>
 <li>\( \Sigma \): alfabeto de entrada (no incluye el blanco)</li>
@@ -72,8 +72,8 @@
 </ul>
 
 </section>
-<section id="slide-orgb373af8">
-<h3 id="orgb373af8">Componentes (II)</h3>
+<section id="slide-orgf720684">
+<h3 id="orgf720684">Componentes (II)</h3>
 <ul>
 <li>\( q_0 \in Q \): estado inicial</li>
 <li>\( q_{\text{accept}}, q_{\text{reject}} \in Q \): estados de aceptación y rechazo</li>
@@ -81,8 +81,8 @@
 </ul>
 
 </section>
-<section id="slide-orgeff453d">
-<h3 id="orgeff453d">Comparación con autómatas</h3>
+<section id="slide-org2f50e11">
+<h3 id="org2f50e11">Comparación con autómatas</h3>
 <ul>
 <li>Memoria infinita (la cinta).</li>
 <li>Cabezal que se mueve en ambas direcciones.</li>
@@ -93,21 +93,21 @@
 </section>
 </section>
 <section>
-<section id="slide-orgcff02a7">
-<h2 id="orgcff02a7">¿Qué es una máquina de Turing universal?</h2>
-<div class="outline-text-2" id="text-orgcff02a7">
+<section id="slide-org414aed7">
+<h2 id="org414aed7">¿Qué es una máquina de Turing universal?</h2>
+<div class="outline-text-2" id="text-org414aed7">
 </div>
 </section>
-<section id="slide-org77c4a4e">
-<h3 id="org77c4a4e">Definición</h3>
+<section id="slide-orgce905f3">
+<h3 id="orgce905f3">Definición</h3>
 <ul>
 <li>Una MTU es capaz de simular cualquier otra máquina de Turing.</li>
 
 </ul>
 
 </section>
-<section id="slide-org3c3ea4d">
-<h3 id="org3c3ea4d">Notación de simulación</h3>
+<section id="slide-org06fe0c1">
+<h3 id="org06fe0c1">Notación de simulación</h3>
 <ul>
 <li>Dada la codificación \( \langle M, w \rangle \), la MTU simula la ejecución de \( M \) sobre \( w \):
 \[
@@ -119,13 +119,13 @@
 </section>
 </section>
 <section>
-<section id="slide-org8f059fd">
-<h2 id="org8f059fd">Lenguaje universal</h2>
-<div class="outline-text-2" id="text-org8f059fd">
+<section id="slide-org149b12c">
+<h2 id="org149b12c">Lenguaje universal</h2>
+<div class="outline-text-2" id="text-org149b12c">
 </div>
 </section>
-<section id="slide-org7b01c12">
-<h3 id="org7b01c12">Definición</h3>
+<section id="slide-org93b3440">
+<h3 id="org93b3440">Definición</h3>
 <ul>
 <li>El lenguaje universal \( L_{uni} \) es el conjunto de cadenas binarias de la forma \( w_M 111 y \), donde:
 <ul>
@@ -137,8 +137,8 @@
 </ul>
 
 </section>
-<section id="slide-org95bc880">
-<h3 id="org95bc880">Características</h3>
+<section id="slide-org1752ac8">
+<h3 id="org1752ac8">Características</h3>
 <ul>
 <li>Los tres unos consecutivos ('111') sirven para separar la codificación de la máquina \( w_M \) de la entrada \( y \).</li>
 <li>El lenguaje universal es:
@@ -149,8 +149,8 @@
 </ul>
 
 </section>
-<section id="slide-orga79ad98">
-<h3 id="orga79ad98">Propiedad</h3>
+<section id="slide-orgbc71143">
+<h3 id="orgbc71143">Propiedad</h3>
 <ul>
 <li>Existe una MTU tal que:
 \[
@@ -162,21 +162,21 @@
 </section>
 </section>
 <section>
-<section id="slide-org7c4e992">
-<h2 id="org7c4e992">Simulación de máquinas: estructura de Muni</h2>
-<div class="outline-text-2" id="text-org7c4e992">
+<section id="slide-org18dcd6c">
+<h2 id="org18dcd6c">Simulación de máquinas: estructura de Muni</h2>
+<div class="outline-text-2" id="text-org18dcd6c">
 </div>
 </section>
-<section id="slide-orge269aab">
-<h3 id="orge269aab">Vista general</h3>
+<section id="slide-orga4fd5d1">
+<h3 id="orga4fd5d1">Vista general</h3>
 <ul>
 <li>Muni puede verse como una máquina de 4 cintas.</li>
 
 </ul>
 
 </section>
-<section id="slide-org7331746">
-<h3 id="org7331746">Cinta 1: Entrada</h3>
+<section id="slide-org72a25e3">
+<h3 id="org72a25e3">Cinta 1: Entrada</h3>
 <ul>
 <li>Contiene \( w_M111y \).</li>
 <li>Esta cinta no se modifica durante la simulación.</li>
@@ -185,8 +185,8 @@
 </ul>
 
 </section>
-<section id="slide-org1d956ac">
-<h3 id="org1d956ac">Cinta 2: Cinta de simulación</h3>
+<section id="slide-org2d89cfd">
+<h3 id="org2d89cfd">Cinta 2: Cinta de simulación</h3>
 <ul>
 <li>Simula la cinta de la máquina \( M \).</li>
 <li>Cada símbolo se representa como una cadena de ceros: \( 0^i \).</li>
@@ -196,8 +196,8 @@
 </ul>
 
 </section>
-<section id="slide-org3bc9592">
-<h3 id="org3bc9592">Cinta 3: Cinta de estados</h3>
+<section id="slide-orga404d12">
+<h3 id="orga404d12">Cinta 3: Cinta de estados</h3>
 <ul>
 <li>Representa el estado actual de la máquina \( M \).</li>
 <li>Se codifica como una cadena de ceros \( 0^k \), donde \( k \) es el número asociado al estado.</li>
@@ -206,32 +206,33 @@
 </ul>
 
 </section>
-<section id="slide-orgd77c6c0">
-<h3 id="orgd77c6c0">Cinta 4: Cinta auxiliar</h3>
+<section id="slide-org84cc154">
+<h3 id="org84cc154">Cinta 4: Cinta auxiliar</h3>
 <ul>
 <li>Se usa para cálculos internos y para hacer <b>shifting</b> (desplazamiento de símbolos).</li>
 <li>Es fundamental para preservar la integridad de la cinta simulada cuando se necesita mover el cabezal o insertar blancos.</li>
 
 </ul>
 
+
 </section>
 </section>
 <section>
-<section id="slide-orgac76bff">
-<h2 id="orgac76bff">Tareas principales de Muni</h2>
-<div class="outline-text-2" id="text-orgac76bff">
+<section id="slide-org1e68e61">
+<h2 id="org1e68e61">Tareas principales de Muni</h2>
+<div class="outline-text-2" id="text-org1e68e61">
 </div>
 </section>
-<section id="slide-orge2a5287">
-<h3 id="orge2a5287">1. Validación de \( w_M \)</h3>
+<section id="slide-org620d131">
+<h3 id="org620d131">1. Validación de \( w_M \)</h3>
 <ul>
 <li>Verifica que \( w_M \) codifica una MT válida. Si no es válida, Muni rechaza.</li>
 
 </ul>
 
 </section>
-<section id="slide-org14a9305">
-<h3 id="org14a9305">2. Codificación de la entrada \( y \)</h3>
+<section id="slide-orgf2b6a4c">
+<h3 id="orgf2b6a4c">2. Codificación de la entrada \( y \)</h3>
 <ul>
 <li>\( 0 \rightarrow 10 \)</li>
 <li>\( 1 \rightarrow 100 \)</li>
@@ -240,16 +241,16 @@
 </ul>
 
 </section>
-<section id="slide-orgd46d946">
-<h3 id="orgd46d946">3. Estado inicial</h3>
+<section id="slide-org05d0317">
+<h3 id="org05d0317">3. Estado inicial</h3>
 <ul>
 <li>Se escribe la codificación de \( q_0 \) como \( 0 \).</li>
 
 </ul>
 
 </section>
-<section id="slide-orga4e64e6">
-<h3 id="orga4e64e6">4. Simulación de transiciones</h3>
+<section id="slide-orgcb3341d">
+<h3 id="orgcb3341d">4. Simulación de transiciones</h3>
 <ul>
 <li>Muni busca en la cinta de definición una transición:
 \[
@@ -259,8 +260,8 @@
 </ul>
 
 </section>
-<section id="slide-org92f703d">
-<h3 id="org92f703d">Explicación de la transición</h3>
+<section id="slide-orgc8fec8e">
+<h3 id="orgc8fec8e">Explicación de la transición</h3>
 <ul>
 <li>Interpreta:
 <ul>
@@ -275,8 +276,8 @@
 </ul>
 
 </section>
-<section id="slide-orgf6a10b8">
-<h3 id="orgf6a10b8">Cinta auxiliar</h3>
+<section id="slide-orgc481bb7">
+<h3 id="orgc481bb7">Cinta auxiliar</h3>
 <ul>
 <li>Se usa para hacer shifting al mover el escáner.</li>
 <li>Mantiene la integridad de la simulación.</li>
@@ -285,8 +286,8 @@
 </ul>
 
 </section>
-<section id="slide-org9a66ddf">
-<h3 id="org9a66ddf">Condiciones de aceptación</h3>
+<section id="slide-org69b6cad">
+<h3 id="org69b6cad">Condiciones de aceptación</h3>
 <ul>
 <li>Si \( 0^k \in F_M \), Muni acepta.</li>
 <li>Si no hay transición definida en \( (0^k, 0^n) \), Muni se detiene sin aceptar.</li>
@@ -296,21 +297,21 @@
 </section>
 </section>
 <section>
-<section id="slide-org546b6aa">
-<h2 id="org546b6aa">Consecuencias teóricas</h2>
-<div class="outline-text-2" id="text-org546b6aa">
+<section id="slide-org6f74457">
+<h2 id="org6f74457">Consecuencias teóricas</h2>
+<div class="outline-text-2" id="text-org6f74457">
 </div>
 </section>
-<section id="slide-org6dfa965">
-<h3 id="org6dfa965">Teorema</h3>
+<section id="slide-orgbd669d6">
+<h3 id="orgbd669d6">Teorema</h3>
 <ul>
 <li>El lenguaje universal \( L_{uni} \) es <b>recursivamente enumerable</b> pero <b>no recursivo</b>.</li>
 
 </ul>
 
 </section>
-<section id="slide-org7665269">
-<h3 id="org7665269">Demostración por contradicción</h3>
+<section id="slide-orgd6cc9cd">
+<h3 id="orgd6cc9cd">Demostración por contradicción</h3>
 <ol>
 <li>Si fuera recursivo, su complemento también lo sería.</li>
 <li>Se podría construir una MT que decida el problema de la parada.</li>
@@ -321,21 +322,21 @@
 </section>
 </section>
 <section>
-<section id="slide-org16f898a">
-<h2 id="org16f898a">El problema de la parada</h2>
-<div class="outline-text-2" id="text-org16f898a">
+<section id="slide-orgf58c3b7">
+<h2 id="orgf58c3b7">El problema de la parada</h2>
+<div class="outline-text-2" id="text-orgf58c3b7">
 </div>
 </section>
-<section id="slide-org3354f0d">
-<h3 id="org3354f0d">Definición</h3>
+<section id="slide-org01c3bae">
+<h3 id="org01c3bae">Definición</h3>
 <ul>
 <li>\( L_{\text{halt}} = \{ w111y \mid M_w \text{ se detiene con entrada } y \} \)</li>
 
 </ul>
 
 </section>
-<section id="slide-orgabe0946">
-<h3 id="orgabe0946">Suposición</h3>
+<section id="slide-org0804548">
+<h3 id="org0804548">Suposición</h3>
 <ul>
 <li><p>
 Supongamos que existe una MT que lo decide, \( M_{\text{halt}} \). Se puede construir:
@@ -356,8 +357,8 @@ M<sub>\text{absurd}</sub>(w) =
 </ul>
 
 </section>
-<section id="slide-org66264c8">
-<h3 id="org66264c8">Contradicción</h3>
+<section id="slide-orge84b17d">
+<h3 id="orge84b17d">Contradicción</h3>
 <ul>
 <li>Esto lleva a una contradicción al evaluar \( M_{\text{absurd}}(w_{\text{absurd}}) \).</li>
 <li>Por lo tanto, el problema de la parada es indecidible.</li>
@@ -365,15 +366,24 @@ M<sub>\text{absurd}</sub>(w) =
 </ul>
 
 </section>
+<section id="slide-org1ef7b76">
+<h3 id="org1ef7b76">Simulador</h3>
+<div class="org-src-container">
+
+<pre  class="src src-url"   ><code trim>https://turingmachine.io/
+</code></pre>
+</div>
+
+</section>
 </section>
 <section>
-<section id="slide-org7ccb6e9">
-<h2 id="org7ccb6e9">Conclusiones</h2>
-<div class="outline-text-2" id="text-org7ccb6e9">
+<section id="slide-orgef5f1fa">
+<h2 id="orgef5f1fa">Conclusiones</h2>
+<div class="outline-text-2" id="text-orgef5f1fa">
 </div>
 </section>
-<section id="slide-orgbc7cde2">
-<h3 id="orgbc7cde2">Ideas clave</h3>
+<section id="slide-org80a25cb">
+<h3 id="org80a25cb">Ideas clave</h3>
 <ul>
 <li>Las MTU son fundamentales para la computación moderna.</li>
 <li>Toda computadora real es una implementación práctica de una MTU.</li>
@@ -384,8 +394,8 @@ M<sub>\text{absurd}</sub>(w) =
 </section>
 </section>
 <section>
-<section id="slide-orge7fd3e2">
-<h2 id="orge7fd3e2">Gracias</h2>
+<section id="slide-orgf5e16a4">
+<h2 id="orgf5e16a4">Gracias por su atencion</h2>
 </section>
 </section>
 </div>
