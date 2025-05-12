@@ -2,8 +2,8 @@
 #+REVEAL_TITLE_SLIDE: <h1>Máquinas de Turing Universales</h1><p>Carlos Eduardo Moreno Vargas y Joaquín Alfredo Castro Córdova</p>
 #+REVEAL_THEME: solarized
 #+OPTIONS: toc:nil num:nil
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@4/
 
-* Introducción
 ** Contexto
    - Las máquinas de Turing (MT) son modelos matemáticos fundamentales en la teoría de la computación.
    - Se usan para definir formalmente lo que significa "computar".
