@@ -68,11 +68,6 @@
      U(\langle M, w \rangle) \rightarrow M(w)
      \]
 
-** Diagrama de cinta
-#+BEGIN_IMAGE: cinta.png
-#+ATTR_HTML: :width 500px
-#+END_IMAGE
-
 * Lenguaje universal
 ** Definición
    - El lenguaje universal \( L_{uni} \) es el conjunto de cadenas binarias de la forma \( w_M 111 y \), donde:
