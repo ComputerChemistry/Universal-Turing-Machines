@@ -2,33 +2,6 @@
 #+REVEAL_TITLE_SLIDE: <h1>Máquinas de Turing Universales</h1><p>Carlos Eduardo Moreno Vargas y Joaquín Alfredo Castro Córdova</p>
 #+REVEAL_THEME: solarized
 #+OPTIONS: toc:nil num:nil
-#+REVEAL_ROOT: file:///home/carlos/.config/emacs/reveal/reveal.js
-
-#+HTML_HEAD: <style>
-#+HTML_HEAD:   .reveal .slides {
-#+HTML_HEAD:     width: 100%;
-#+HTML_HEAD:     height: 100%;
-#+HTML_HEAD:   }
-#+HTML_HEAD:   .reveal section {
-#+HTML_HEAD:     padding: 20px;
-#+HTML_HEAD:     height: auto;
-#+HTML_HEAD:     overflow: visible;
-#+HTML_HEAD:   }
-#+HTML_HEAD:   .reveal h1 {
-#+HTML_HEAD:     font-size: 2.0em;
-#+HTML_HEAD:   }
-#+HTML_HEAD:   .reveal h2 {
-#+HTML_HEAD:     font-size: 1.6em;
-#+HTML_HEAD:   }
-#+HTML_HEAD:   .reveal p, .reveal li {
-#+HTML_HEAD:     font-size: 1.1em;
-#+HTML_HEAD:     line-height: 1.4;
-#+HTML_HEAD:     margin-bottom: 0.5em;
-#+HTML_HEAD:   }
-#+HTML_HEAD:   .MathJax {
-#+HTML_HEAD:     font-size: 100% !important;
-#+HTML_HEAD:   }
-#+HTML_HEAD: </style>
 
 * Introducción
 ** Contexto
