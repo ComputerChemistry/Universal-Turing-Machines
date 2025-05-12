@@ -1,80 +1,187 @@
 #+TITLE: Máquinas de Turing Universales
-#+REVEAL_TITLE_SLIDE: <h1>Máquinas de Turing Universales</h1><p>Carlos Eduardo Moreno Vargas<br/>Joaquin Alfredo Castro Cordova</p>
-#+REVEAL_EXTRA_CSS: gruvbox-light.css
-#+REVEAL_INIT_OPTIONS: transition: 'slide'
+#+REVEAL_TITLE_SLIDE: <h1>Máquinas de Turing Universales</h1><p>Carlos Eduardo Moreno Vargas y Joaquín Alfredo Castro Córdova</p>
+#+REVEAL_THEME: solarized
 #+OPTIONS: toc:nil num:nil
-#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_ROOT: file:///home/carlos/.config/emacs/reveal/reveal.js
 
+#+HTML_HEAD: <style>
+#+HTML_HEAD:   .reveal .slides {
+#+HTML_HEAD:     width: 100%;
+#+HTML_HEAD:     height: 100%;
+#+HTML_HEAD:   }
+#+HTML_HEAD:   .reveal section {
+#+HTML_HEAD:     padding: 20px;
+#+HTML_HEAD:     height: auto;
+#+HTML_HEAD:     overflow: visible;
+#+HTML_HEAD:   }
+#+HTML_HEAD:   .reveal h1 {
+#+HTML_HEAD:     font-size: 2.0em;
+#+HTML_HEAD:   }
+#+HTML_HEAD:   .reveal h2 {
+#+HTML_HEAD:     font-size: 1.6em;
+#+HTML_HEAD:   }
+#+HTML_HEAD:   .reveal p, .reveal li {
+#+HTML_HEAD:     font-size: 1.1em;
+#+HTML_HEAD:     line-height: 1.4;
+#+HTML_HEAD:     margin-bottom: 0.5em;
+#+HTML_HEAD:   }
+#+HTML_HEAD:   .MathJax {
+#+HTML_HEAD:     font-size: 100% !important;
+#+HTML_HEAD:   }
+#+HTML_HEAD: </style>
 
 * Introducción
-Las *máquinas de Turing* (MT) son modelos formales fundamentales para estudiar lo que puede o no ser computado.
-Una *máquina de Turing universal* es una MT que puede simular a cualquier otra MT a partir de una descripción de su código y entrada.
+** Contexto
+   - Las máquinas de Turing (MT) son modelos matemáticos fundamentales en la teoría de la computación.
+   - Se usan para definir formalmente lo que significa "computar".
+   - Una máquina de Turing universal (MTU) es una MT capaz de simular cualquier otra MT.
 
 * ¿Qué es una máquina de Turing?
-Una MT es una 7-tupla:
+** Definición formal
+   - Formalmente, una máquina de Turing es una 7-tupla:
+     \[
+     M = (Q, \Sigma, \Gamma, \delta, q_0, q_{\text{accept}}, q_{\text{reject}})
+     \]
 
-\[
-M = (Q, \Sigma, \Gamma, \delta, q_0, q_{\text{accept}}, q_{\text{reject}})
-\]
+** Componentes (I)
+   - \( Q \): conjunto finito de estados
+   - \( \Sigma \): alfabeto de entrada (no incluye el blanco)
+   - \( \Gamma \): alfabeto de la cinta (incluye el símbolo blanco)
+   - \( \delta \): función de transición \( \delta : Q \times \Gamma \rightarrow Q \times \Gamma \times \{L, R\} \)
 
-donde:
+** Componentes (II)
+   - \( q_0 \in Q \): estado inicial
+   - \( q_{\text{accept}}, q_{\text{reject}} \in Q \): estados de aceptación y rechazo
 
-- \( Q \): conjunto de estados
-- \( \Sigma \): alfabeto de entrada
-- \( \Gamma \): alfabeto de cinta (\( \Sigma \subseteq \Gamma \), incluye blanco)
-- \( \delta \): función de transición
-- \( q_0 \): estado inicial
-- \( q_{\text{accept}} \), \( q_{\text{reject}} \): estados finales
+** Comparación con autómatas
+   - Memoria infinita (la cinta).
+   - Cabezal que se mueve en ambas direcciones.
+   - Capacidad de escribir en la cinta.
 
-* Ejemplo de transición
+* ¿Qué es una máquina de Turing universal?
+** Definición
+   - Una MTU es capaz de simular cualquier otra máquina de Turing.
 
-Una transición típica:
+** Notación de simulación
+   - Dada la codificación \( \langle M, w \rangle \), la MTU simula la ejecución de \( M \) sobre \( w \):
+     \[
+     U(\langle M, w \rangle) \rightarrow M(w)
+     \]
 
-\[
-\delta(q, a) = (q', b, R)
-\]
+** Diagrama de cinta
+#+BEGIN_IMAGE: cinta.png
+#+ATTR_HTML: :width 500px
+#+END_IMAGE
 
-Significa: si la MT está en el estado \( q \) leyendo el símbolo \( a \), entonces escribe \( b \), se mueve a la derecha y cambia al estado \( q' \).
+* Lenguaje universal
+** Definición
+   - El lenguaje universal \( L_{uni} \) es el conjunto de cadenas binarias de la forma \( w_M 111 y \), donde:
+     - \( w_M \) es la codificación binaria de una máquina \( M \).
+     - \( y \) es una cadena binaria en \( L(M) \), el conjunto de cadenas aceptadas por \( M \).
 
-* Codificación de máquinas de Turing
+** Características
+   - Los tres unos consecutivos ('111') sirven para separar la codificación de la máquina \( w_M \) de la entrada \( y \).
+   - El lenguaje universal es:
+     \[
+     L_{uni} = \{ w_M 111 y \mid y \in L(M) \}
+     \]
 
-Para que una MT universal pueda simular a otra MT, primero debemos *codificar* una MT como una cadena de símbolos.
+** Propiedad
+   - Existe una MTU tal que:
+     \[
+     L(M_{uni}) = L_{uni}
+     \]
 
-Esta codificación incluye:
+* Simulación de máquinas: estructura de Muni
+** Vista general
+   - Muni puede verse como una máquina de 4 cintas.
 
-- Estados y transiciones como números
-- Separadores para distinguir cada componente
-- Codificación de la entrada
+** Cinta 1: Entrada
+   - Contiene \( w_M111y \).
+   - Esta cinta no se modifica durante la simulación.
+   - Sirve como referencia constante para la MT original y su entrada.
 
-* Máquina de Turing universal
+** Cinta 2: Cinta de simulación
+   - Simula la cinta de la máquina \( M \).
+   - Cada símbolo se representa como una cadena de ceros: \( 0^i \).
+   - Los símbolos están separados entre sí por un 1.
+   - Ejemplo de contenido: \( 0^1 \,1\, 0^3 \,1\, 0^2 \) para representar tres símbolos codificados.
 
-Una *MT universal* \( U \) acepta como entrada una cadena que representa otra MT \( M \) y una entrada \( w \), y simula el comportamiento de \( M \) sobre \( w \):
+** Cinta 3: Cinta de estados
+   - Representa el estado actual de la máquina \( M \).
+   - Se codifica como una cadena de ceros \( 0^k \), donde \( k \) es el número asociado al estado.
+   - Esta cinta se actualiza con cada transición.
 
-\[
-U(\langle M, w \rangle) \rightarrow M(w)
-\]
+** Cinta 4: Cinta auxiliar
+   - Se usa para cálculos internos y para hacer *shifting* (desplazamiento de símbolos).
+   - Es fundamental para preservar la integridad de la cinta simulada cuando se necesita mover el cabezal o insertar blancos.
 
-Donde \( \langle M, w \rangle \) es una codificación binaria de ambos.
+* Tareas principales de Muni
+** 1. Validación de \( w_M \)
+   - Verifica que \( w_M \) codifica una MT válida. Si no es válida, Muni rechaza.
 
-* Importancia teórica
+** 2. Codificación de la entrada \( y \)
+   - \( 0 \rightarrow 10 \)
+   - \( 1 \rightarrow 100 \)
+   - Blanco \( \rightarrow 1000 \)
 
-- Son la base conceptual de los *computadores reales*.
-- Establecen la noción de *programa universal* (precursor de lenguajes de programación).
-- Son fundamentales para demostrar la *incomputabilidad* (ej. problema de la parada).
+** 3. Estado inicial
+   - Se escribe la codificación de \( q_0 \) como \( 0 \).
 
-* Código LaTeX: Máquina que copia bits
+** 4. Simulación de transiciones
+   - Muni busca en la cinta de definición una transición:
+     \[
+     0^i \, 10^j \, 10^k \, 10^l \, 10^m
+     \]
 
-Un ejemplo de transición para una MT que copia una cadena binaria separada por un símbolo especial:
+** Explicación de la transición
+   - Interpreta:
+     - \( 0^i \): estado actual.
+     - \( 0^j \): símbolo leído.
+     - \( 0^k \): nuevo estado.
+     - \( 0^l \): nuevo símbolo.
+     - \( 0^m \): dirección (1 → derecha, 2 → izquierda).
 
-\[
-\delta(q_0, 0) = (q_0, 0, R) \\
-\delta(q_0, 1) = (q_0, 1, R) \\
-\delta(q_0, \#) = (q_1, \#, R)
-\]
+** Cinta auxiliar
+   - Se usa para hacer shifting al mover el escáner.
+   - Mantiene la integridad de la simulación.
+   - Es esencial para cambios de símbolos o insertar blancos.
 
-Esta máquina simplemente avanza hasta encontrar el símbolo separador `#`.
+** Condiciones de aceptación
+   - Si \( 0^k \in F_M \), Muni acepta.
+   - Si no hay transición definida en \( (0^k, 0^n) \), Muni se detiene sin aceptar.
 
-* Fin
-Gracias por su atención.
+* Consecuencias teóricas
+** Teorema
+   - El lenguaje universal \( L_{uni} \) es *recursivamente enumerable* pero *no recursivo*.
 
-¿Preguntas?
+** Demostración por contradicción
+   1. Si fuera recursivo, su complemento también lo sería.
+   2. Se podría construir una MT que decida el problema de la parada.
+   3. Esto lleva a una contradicción lógica (construcción de \( M_{\text{absurd}} \)).
+
+* El problema de la parada
+** Definición
+   - \( L_{\text{halt}} = \{ w111y \mid M_w \text{ se detiene con entrada } y \} \)
+
+** Suposición
+   - Supongamos que existe una MT que lo decide, \( M_{\text{halt}} \). Se puede construir:
+     \[
+     M_{\text{absurd}}(w) =
+     \begin{cases}
+     \text{loop}, & \text{si } M_{\text{halt}}(w111w) = \text{true} \\
+     \text{acepta}, & \text{si } M_{\text{halt}}(w111w) = \text{false}
+     \end{cases}
+     \]
+
+** Contradicción
+   - Esto lleva a una contradicción al evaluar \( M_{\text{absurd}}(w_{\text{absurd}}) \).
+   - Por lo tanto, el problema de la parada es indecidible.
+
+* Conclusiones
+** Ideas clave
+   - Las MTU son fundamentales para la computación moderna.
+   - Toda computadora real es una implementación práctica de una MTU.
+   - La existencia de problemas indecidibles es una de las consecuencias más profundas de la teoría de la computación.
+
+* Gracias

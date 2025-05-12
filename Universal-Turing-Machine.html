@@ -9,190 +9,427 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+<link rel="stylesheet" href="file:///home/carlos/.config/emacs/reveal/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href="file:///home/carlos/.config/emacs/reveal/reveal.js/dist/theme/solarized.css" id="theme"/>
 
-<link rel="stylesheet" href="gruvbox-light.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/zenburn.css"/>
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-    if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    }
-</script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style>
+.reveal .slides {
+width: 100%;
+height: 100%;
+}
+.reveal section {
+padding: 20px;
+height: auto;
+overflow: visible;
+}
+.reveal h1 {
+font-size: 2.0em;
+}
+.reveal h2 {
+font-size: 1.6em;
+}
+.reveal p, .reveal li {
+font-size: 1.1em;
+line-height: 1.4;
+margin-bottom: 0.5em;
+}
+.MathJax {
+font-size: 100% !important;
+}
+</style>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1>Máquinas de Turing Universales</h1><p>Carlos Eduardo Moreno Vargas<br/>Joaquin Alfredo Castro Cordova</p>
+<section id="sec-title-slide"><h1>Máquinas de Turing Universales</h1><p>Carlos Eduardo Moreno Vargas y Joaquín Alfredo Castro Córdova</p>
 </section>
-
 
 <section>
-<section id="slide-orgcdf02e2">
-<h2 id="orgcdf02e2">Introducción</h2>
-<p>
-Las <b>máquinas de Turing</b> (MT) son modelos formales fundamentales para estudiar lo que puede o no ser computado.
-</p>
-
-<p>
-Una <b>máquina de Turing universal</b> es una MT que puede simular a cualquier otra MT a partir de una descripción de su código y entrada.
-</p>
-
+<section id="slide-org5413de4">
+<h2 id="org5413de4">Introducción</h2>
+<div class="outline-text-2" id="text-org5413de4">
+</div>
 </section>
-</section>
-<section>
-<section id="slide-orgecd4e94">
-<h2 id="orgecd4e94">¿Qué es una máquina de Turing?</h2>
-<p>
-Una MT es una 7-tupla:
-</p>
-
-<p>
-\[
-M = (Q, \Sigma, \Gamma, \delta, q_0, q_{\text{accept}}, q_{\text{reject}})
-\]
-</p>
-
-<p>
-donde:
-</p>
-
+<section id="slide-org057b17b">
+<h3 id="org057b17b">Contexto</h3>
 <ul>
-<li>\( Q \): conjunto de estados</li>
-<li>\( \Sigma \): alfabeto de entrada</li>
-<li>\( \Gamma \): alfabeto de cinta (\( \Sigma \subseteq \Gamma \), incluye blanco)</li>
-<li>\( \delta \): función de transición</li>
-<li>\( q_0 \): estado inicial</li>
-<li>\( q_{\text{accept}} \), \( q_{\text{reject}} \): estados finales</li>
+<li>Las máquinas de Turing (MT) son modelos matemáticos fundamentales en la teoría de la computación.</li>
+<li>Se usan para definir formalmente lo que significa "computar".</li>
+<li>Una máquina de Turing universal (MTU) es una MT capaz de simular cualquier otra MT.</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org306716f">
-<h2 id="org306716f">Ejemplo de transición</h2>
-<p>
-Una transición típica:
-</p>
-
-<p>
-\[
-\delta(q, a) = (q', b, R)
-\]
-</p>
-
-<p>
-Significa: si la MT está en el estado \( q \) leyendo el símbolo \( a \), entonces escribe \( b \), se mueve a la derecha y cambia al estado \( q' \).
-</p>
-
+<section id="slide-orgfbc91b9">
+<h2 id="orgfbc91b9">¿Qué es una máquina de Turing?</h2>
+<div class="outline-text-2" id="text-orgfbc91b9">
+</div>
 </section>
-</section>
-<section>
-<section id="slide-orgdd8cab4">
-<h2 id="orgdd8cab4">Codificación de máquinas de Turing</h2>
-<p>
-Para que una MT universal pueda simular a otra MT, primero debemos <b>codificar</b> una MT como una cadena de símbolos.
-</p>
-
-<p>
-Esta codificación incluye:
-</p>
-
+<section id="slide-orgd8180f7">
+<h3 id="orgd8180f7">Definición formal</h3>
 <ul>
-<li>Estados y transiciones como números</li>
-<li>Separadores para distinguir cada componente</li>
-<li>Codificación de la entrada</li>
+<li>Formalmente, una máquina de Turing es una 7-tupla:
+\[
+     M = (Q, \Sigma, \Gamma, \delta, q_0, q_{\text{accept}}, q_{\text{reject}})
+     \]</li>
+
+</ul>
+
+</section>
+<section id="slide-orgbc401ff">
+<h3 id="orgbc401ff">Componentes (I)</h3>
+<ul>
+<li>\( Q \): conjunto finito de estados</li>
+<li>\( \Sigma \): alfabeto de entrada (no incluye el blanco)</li>
+<li>\( \Gamma \): alfabeto de la cinta (incluye el símbolo blanco)</li>
+<li>\( \delta \): función de transición \( \delta : Q \times \Gamma \rightarrow Q \times \Gamma \times \{L, R\} \)</li>
+
+</ul>
+
+</section>
+<section id="slide-org9483072">
+<h3 id="org9483072">Componentes (II)</h3>
+<ul>
+<li>\( q_0 \in Q \): estado inicial</li>
+<li>\( q_{\text{accept}}, q_{\text{reject}} \in Q \): estados de aceptación y rechazo</li>
+
+</ul>
+
+</section>
+<section id="slide-org6a532e2">
+<h3 id="org6a532e2">Comparación con autómatas</h3>
+<ul>
+<li>Memoria infinita (la cinta).</li>
+<li>Cabezal que se mueve en ambas direcciones.</li>
+<li>Capacidad de escribir en la cinta.</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orga09c91b">
-<h2 id="orga09c91b">Máquina de Turing universal</h2>
-<p>
-Una <b>MT universal</b> \( U \) acepta como entrada una cadena que representa otra MT \( M \) y una entrada \( w \), y simula el comportamiento de \( M \) sobre \( w \):
-</p>
+<section id="slide-orgb44c912">
+<h2 id="orgb44c912">¿Qué es una máquina de Turing universal?</h2>
+<div class="outline-text-2" id="text-orgb44c912">
+</div>
+</section>
+<section id="slide-org2108951">
+<h3 id="org2108951">Definición</h3>
+<ul>
+<li>Una MTU es capaz de simular cualquier otra máquina de Turing.</li>
 
-<p>
+</ul>
+
+</section>
+<section id="slide-orgf967122">
+<h3 id="orgf967122">Notación de simulación</h3>
+<ul>
+<li>Dada la codificación \( \langle M, w \rangle \), la MTU simula la ejecución de \( M \) sobre \( w \):
 \[
-U(\langle M, w \rangle) \rightarrow M(w)
-\]
-</p>
+     U(\langle M, w \rangle) \rightarrow M(w)
+     \]</li>
 
+</ul>
+
+</section>
+<section id="slide-org617960c">
+<h3 id="org617960c">Diagrama de cinta</h3>
 <p>
-Donde \( \langle M, w \rangle \) es una codificación binaria de ambos.
+#+BEGIN<sub>IMAGE</sub>: cinta.png
+</p>
+<p width="500px">
+#+END<sub>IMAGE</sub>
 </p>
 
 </section>
 </section>
 <section>
-<section id="slide-org26f2e75">
-<h2 id="org26f2e75">Importancia teórica</h2>
+<section id="slide-org0d4caaa">
+<h2 id="org0d4caaa">Lenguaje universal</h2>
+<div class="outline-text-2" id="text-org0d4caaa">
+</div>
+</section>
+<section id="slide-org79f6bb7">
+<h3 id="org79f6bb7">Definición</h3>
 <ul>
-<li>Son la base conceptual de los <b>computadores reales</b>.</li>
-<li>Establecen la noción de <b>programa universal</b> (precursor de lenguajes de programación).</li>
-<li>Son fundamentales para demostrar la <b>incomputabilidad</b> (ej. problema de la parada).</li>
+<li>El lenguaje universal \( L_{uni} \) es el conjunto de cadenas binarias de la forma \( w_M 111 y \), donde:
+<ul>
+<li>\( w_M \) es la codificación binaria de una máquina \( M \).</li>
+<li>\( y \) es una cadena binaria en \( L(M) \), el conjunto de cadenas aceptadas por \( M \).</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org8fedd20">
+<h3 id="org8fedd20">Características</h3>
+<ul>
+<li>Los tres unos consecutivos ('111') sirven para separar la codificación de la máquina \( w_M \) de la entrada \( y \).</li>
+<li>El lenguaje universal es:
+\[
+     L_{uni} = \{ w_M 111 y \mid y \in L(M) \}
+     \]</li>
+
+</ul>
+
+</section>
+<section id="slide-org60a4848">
+<h3 id="org60a4848">Propiedad</h3>
+<ul>
+<li>Existe una MTU tal que:
+\[
+     L(M_{uni}) = L_{uni}
+     \]</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org2ea3a19">
-<h2 id="org2ea3a19">Código LaTeX: Máquina que copia bits</h2>
-<p>
-Un ejemplo de transición para una MT que copia una cadena binaria separada por un símbolo especial:
-</p>
+<section id="slide-org525543f">
+<h2 id="org525543f">Simulación de máquinas: estructura de Muni</h2>
+<div class="outline-text-2" id="text-org525543f">
+</div>
+</section>
+<section id="slide-org6ab9e70">
+<h3 id="org6ab9e70">Vista general</h3>
+<ul>
+<li>Muni puede verse como una máquina de 4 cintas.</li>
 
-<p>
-\[
-\delta(q_0, 0) = (q_0, 0, R) \\
-\delta(q_0, 1) = (q_0, 1, R) \\
-\delta(q_0, \#) = (q_1, \#, R)
-\]
-</p>
+</ul>
 
-<p>
-Esta máquina simplemente avanza hasta encontrar el símbolo separador `#`.
-</p>
+</section>
+<section id="slide-orgc1d681d">
+<h3 id="orgc1d681d">Cinta 1: Entrada</h3>
+<ul>
+<li>Contiene \( w_M111y \).</li>
+<li>Esta cinta no se modifica durante la simulación.</li>
+<li>Sirve como referencia constante para la MT original y su entrada.</li>
+
+</ul>
+
+</section>
+<section id="slide-org815444e">
+<h3 id="org815444e">Cinta 2: Cinta de simulación</h3>
+<ul>
+<li>Simula la cinta de la máquina \( M \).</li>
+<li>Cada símbolo se representa como una cadena de ceros: \( 0^i \).</li>
+<li>Los símbolos están separados entre sí por un 1.</li>
+<li>Ejemplo de contenido: \( 0^1 \,1\, 0^3 \,1\, 0^2 \) para representar tres símbolos codificados.</li>
+
+</ul>
+
+</section>
+<section id="slide-org6874a57">
+<h3 id="org6874a57">Cinta 3: Cinta de estados</h3>
+<ul>
+<li>Representa el estado actual de la máquina \( M \).</li>
+<li>Se codifica como una cadena de ceros \( 0^k \), donde \( k \) es el número asociado al estado.</li>
+<li>Esta cinta se actualiza con cada transición.</li>
+
+</ul>
+
+</section>
+<section id="slide-orgaf705fc">
+<h3 id="orgaf705fc">Cinta 4: Cinta auxiliar</h3>
+<ul>
+<li>Se usa para cálculos internos y para hacer <b>shifting</b> (desplazamiento de símbolos).</li>
+<li>Es fundamental para preservar la integridad de la cinta simulada cuando se necesita mover el cabezal o insertar blancos.</li>
+
+</ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orga0b1d72">
-<h2 id="orga0b1d72">Fin</h2>
-<p>
-Gracias por su atención.
-</p>
+<section id="slide-org88f9bff">
+<h2 id="org88f9bff">Tareas principales de Muni</h2>
+<div class="outline-text-2" id="text-org88f9bff">
+</div>
+</section>
+<section id="slide-orgd415f99">
+<h3 id="orgd415f99">1. Validación de \( w_M \)</h3>
+<ul>
+<li>Verifica que \( w_M \) codifica una MT válida. Si no es válida, Muni rechaza.</li>
 
-<p>
-¿Preguntas?
+</ul>
+
+</section>
+<section id="slide-org2988238">
+<h3 id="org2988238">2. Codificación de la entrada \( y \)</h3>
+<ul>
+<li>\( 0 \rightarrow 10 \)</li>
+<li>\( 1 \rightarrow 100 \)</li>
+<li>Blanco \( \rightarrow 1000 \)</li>
+
+</ul>
+
+</section>
+<section id="slide-org52ac03f">
+<h3 id="org52ac03f">3. Estado inicial</h3>
+<ul>
+<li>Se escribe la codificación de \( q_0 \) como \( 0 \).</li>
+
+</ul>
+
+</section>
+<section id="slide-orgbe92f14">
+<h3 id="orgbe92f14">4. Simulación de transiciones</h3>
+<ul>
+<li>Muni busca en la cinta de definición una transición:
+\[
+     0^i \, 10^j \, 10^k \, 10^l \, 10^m
+     \]</li>
+
+</ul>
+
+</section>
+<section id="slide-org7673a19">
+<h3 id="org7673a19">Explicación de la transición</h3>
+<ul>
+<li>Interpreta:
+<ul>
+<li>\( 0^i \): estado actual.</li>
+<li>\( 0^j \): símbolo leído.</li>
+<li>\( 0^k \): nuevo estado.</li>
+<li>\( 0^l \): nuevo símbolo.</li>
+<li>\( 0^m \): dirección (1 → derecha, 2 → izquierda).</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org8d17efa">
+<h3 id="org8d17efa">Cinta auxiliar</h3>
+<ul>
+<li>Se usa para hacer shifting al mover el escáner.</li>
+<li>Mantiene la integridad de la simulación.</li>
+<li>Es esencial para cambios de símbolos o insertar blancos.</li>
+
+</ul>
+
+</section>
+<section id="slide-org8dd321f">
+<h3 id="org8dd321f">Condiciones de aceptación</h3>
+<ul>
+<li>Si \( 0^k \in F_M \), Muni acepta.</li>
+<li>Si no hay transición definida en \( (0^k, 0^n) \), Muni se detiene sin aceptar.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org8d5ff85">
+<h2 id="org8d5ff85">Consecuencias teóricas</h2>
+<div class="outline-text-2" id="text-org8d5ff85">
+</div>
+</section>
+<section id="slide-org9d7d43f">
+<h3 id="org9d7d43f">Teorema</h3>
+<ul>
+<li>El lenguaje universal \( L_{uni} \) es <b>recursivamente enumerable</b> pero <b>no recursivo</b>.</li>
+
+</ul>
+
+</section>
+<section id="slide-org66cd741">
+<h3 id="org66cd741">Demostración por contradicción</h3>
+<ol>
+<li>Si fuera recursivo, su complemento también lo sería.</li>
+<li>Se podría construir una MT que decida el problema de la parada.</li>
+<li>Esto lleva a una contradicción lógica (construcción de \( M_{\text{absurd}} \)).</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-org3181f4c">
+<h2 id="org3181f4c">El problema de la parada</h2>
+<div class="outline-text-2" id="text-org3181f4c">
+</div>
+</section>
+<section id="slide-org745d792">
+<h3 id="org745d792">Definición</h3>
+<ul>
+<li>\( L_{\text{halt}} = \{ w111y \mid M_w \text{ se detiene con entrada } y \} \)</li>
+
+</ul>
+
+</section>
+<section id="slide-org8256606">
+<h3 id="org8256606">Suposición</h3>
+<ul>
+<li><p>
+Supongamos que existe una MT que lo decide, \( M_{\text{halt}} \). Se puede construir:
+\[
+M<sub>\text{absurd}</sub>(w) =
 </p>
+<div>
+\begin{cases}
+\text{loop}, & \text{si } M_{\text{halt}}(w111w) = \text{true} \\
+\text{acepta}, & \text{si } M_{\text{halt}}(w111w) = \text{false}
+\end{cases}
+
+</div>
+<p>
+\]
+</p></li>
+
+</ul>
+
+</section>
+<section id="slide-org1da3547">
+<h3 id="org1da3547">Contradicción</h3>
+<ul>
+<li>Esto lleva a una contradicción al evaluar \( M_{\text{absurd}}(w_{\text{absurd}}) \).</li>
+<li>Por lo tanto, el problema de la parada es indecidible.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org5c31a05">
+<h2 id="org5c31a05">Conclusiones</h2>
+<div class="outline-text-2" id="text-org5c31a05">
+</div>
+</section>
+<section id="slide-orga66296e">
+<h3 id="orga66296e">Ideas clave</h3>
+<ul>
+<li>Las MTU son fundamentales para la computación moderna.</li>
+<li>Toda computadora real es una implementación práctica de una MTU.</li>
+<li>La existencia de problemas indecidibles es una de las consecuencias más profundas de la teoría de la computación.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org6af2c84">
+<h2 id="org6af2c84">Gracias</h2>
 </section>
 </section>
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="/home/carlos/.config/emacs/reveal/reveal.js/dist/reveal.js"></script>
+<script src="file:///home/carlos/.config/emacs/reveal/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="file:///home/carlos/.config/emacs/reveal/reveal.js/plugin/zoom/zoom.js"></script>
+<script src="file:///home/carlos/.config/emacs/reveal/reveal.js/plugin/notes/notes.js"></script>
+
 
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-transition: 'slide',
-
-// Optional libraries used to extend on reveal.js
-dependencies: [
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
-
+plugins: [RevealMarkdown, RevealZoom, RevealNotes]
 });
 
 </script>
